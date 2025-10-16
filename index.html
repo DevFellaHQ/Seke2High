@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seke 2 High School Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+       background: #e6f0fa;
+      padding: 20px;
+      color: #333;
+     
+}
+ header, footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+
+    h1{
+      color: white;
+}
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+}
+
+    button {
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      margin-top: 15px;
+      cursor: pointer;
+}
+
+    button:hover {
+      background-color: #2980b9;
+}
+
+.section {
+      margin-top: 40px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      color: #333;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+    #adminPanel, #approvalStatus, #approvedList {
+      display: none;
+}
+
+.approved {
+      color: green;
+}
+
+.rejected {
+      color: red;
+}
+
+.learner-card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+}
+
+.results-box {
+      display: none;
+}
+h2, h3 {
+color: #003366;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+   <header>
+    <h1>Seke 2 High School</h1>
+    <p>Online Student Registration Form</p>
+  </header>
+
+  <div class="section">
+    <h2>Register Now</h2>
+    <form id="registrationForm">
+      <input type="text" id="studentName" placeholder="Student Name" required />
+      <input type="text" id="parentName" placeholder="Parent/Guardian Name" required />
+      <input type="tel" id="contact" placeholder="Contact Number" required />
+      <select id="formLevel" onchange="toggleResultsBox()" required>
+        <option value="">Select Form</option>
+        <option value="Form 1">Form 1</option>
+        <option value="Form 2">Form 2</option>
+        <option value="Form 3">Form 3</option>
+        <option value="Form 4">Form 4</option>
+        <option value="Form 5">Form 5</option>
+        <option value="Form 6">Form 6</option>
+      </select>
+
+      <div id="form1Results" class="results-box">
+        <textarea id="form1Result" placeholder="Enter Grade 7 Results"></textarea>
+      </div>
+
+      <div id="form5Results" class="results-box">
+        <textarea id="form5Result" placeholder="Enter O-Level Results"></textarea>
+      </div>
+
+      <button type="submit">Register</button>
+    </form>
+    <p id="confirmationMessage"></p>
+  </div>
+
+  <div class="section" id="approvalStatus">
+    <h2>Approval Status</h2>
+    <p id="statusMessage">Please wait  2 hours for approval...</p>
+  </div>
+
+  <div class="section">
+    <h2>Admin Login</h2>
+    <input type="password" id="adminPassword" placeholder="Enter Admin Password" />
+    <button onclick="showAdminPanel()">Login</button>
+  </div>
+
+  <div class="section" id="adminPanel">
+    <h2>Admin Panel</h2>
+    <p>Total Registered Learners: <span id="learnerCount">0</span></p>
+    <div id="learnerList"></div>
+    <button onclick="clearAllData()">Clear All Registrations</button>
+  </div>
+
+  <div class="section" id="approvedList">
+    <h2>Approved Students</h2>
+    <ul id="approvedStudents"></ul>
+  </div>
+  
+   <div class="section">
+      <h2>About Us</h2>
+      <ul>
+        <li>Top government school in Chitungwiza</li>
+        <li>Consistent high pass rates</li>
+        <li>Interactive classroom smart boards</li>       
+        <li>Qualified and passionate teachers</li>
+        <li>Modern science & computer labs</li>
+        <li>Library, Wi-Fi, and solar power backup</li>
+ <li>Zero discrimination policy</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Fees & Terms</h2>
+      <p><strong>Enrollment Fee:</strong> 245 (Boys),251 (Girls)</p>
+      <p>Includes uniform and first term fees</p>
+      <p><strong>Stationery:</strong> $17 for school books</p>
+      <p>Registration available for Form 1–6</p>
+    </div>
+
+<div class="section">
+    <h2>We offer these subjects</h2>
+    <ul>
+     <li>Shona</li>
+    <li> English</li>
+    <li> Mathematics</li>
+     <li>Combined Science</li>
+    <li>Geography</li>
+    <li>Accounts & Business studies</li>
+     <li>Sciences</li>
+    <li> Commerce</li>
+    <li> Arts</li>
+     <li>Physics</li>
+    <li> Chemistry</li>
+     <li>Heritage</li>
+    <li>History</li>
+     <li>Agriculture</li>
+     </ul>
+     </div>
+     
+     <div class="section">
+     <h2>We offer these Practicals</h2>
+        <ul>
+        <li>MTD Metal Technology&Design</li>
+        <li>Agriculture</li>
+        <li>WTD Wood Technology&Design</li>
+<li>TTD Textile Technology&Design</li>
+<li>Bakery studies</li>
+</ul>
+</div>
+
+ <div class="section">    
+ <h2>We offer these sports</h2>    
+     <ul>
+   <li>Ball games</li>  
+   <li>Chess</li>  
+   <li>Darts</li>  
+   <li>Track</li>
+   <li>Field</li>
+   <li>Quiz</li>
+     </ul>
+     </div>
+     
+     <div class="section">
+       <h2>We offer these clubs</h2> 
+       <ul>
+        <li>STEM Science Club</li>   
+        <li>Karate club</li>
+        <li>Scripture Union.SU club</li>
+        <li>Health club</li>
+        </ul>
+        </div>
+        
+    <div class="section">
+      <h3>Location</h3>
+      <p>Unity B, Post Office Box 1, Chitungwiza, Harare Zimbabwe</p>
+    </div>
+  
+ <div class="section">
+     <h3>Powered&Designed by Power Minds Core</h3>
+     </div>
+     </main>
+  <footer>
+    &copy; 2025 Seke 2 High School. All rights reserved. 
+      Designed by Power Minds Core.Rian Pfarikingstone
+  </footer>
+
+
+  <script>
+    let learners = JSON.parse(localStorage.getItem('learners')) || [];
+    updateLearnerCount();
+    checkAutoClear();
+
+    function setInitialTimestamp() {
+      if (!localStorage.getItem('registrationTimestamp')) {
+        localStorage.setItem('registrationTimestamp', Date.now());
+}
+}
+
+    function checkAutoClear() {
+ const timestamp = localStorage.getItem('registrationTimestamp');
+      if (timestamp) {
+        const now = Date.now();
+        const twoDays = 2 * 24 * 60 * 60 * 1000;
+        if (now - parseInt(timestamp)>= twoDays) {
+          localStorage.removeItem('learners');
+          localStorage.removeItem('registrationTimestamp');
+          learners = [];
+          updateLearnerCount();
+          renderLearnerList();
+          updateApprovedList();
+          alert("⏳ 2 days have passed. All registration data has been cleared.");
+}
+}
+}
+
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      setInitialTimestamp();
+      checkAutoClear();
+
+      const studentName = document.getElementById('studentName').value;
+      const parentName = document.getElementById('parentName').value;
+      const contact = document.getElementById('contact').value;
+      const formLevel = document.getElementById('formLevel').value;
+      const form1Result = document.getElementById('form1Result').value;
+      const form5Result = document.getElementById('form5Result').value;
+
+      const learner = {
+        studentName,
+        parentName,
+        contact,
+        formLevel,
+        results: formLevel === "Form 1"? form1Result: formLevel === "Form 5"? form5Result: "",
+        status: "pending"
+};
+
+      learners.push(learner);
+      localStorage.setItem('learners', JSON.stringify(learners));
+      updateLearnerCount();
+
+      document.getElementById('confirmationMessage').textContent = "✅ Registration successfully sent. Awaiting head approval...";
+      document.getElementById('approvalStatus').style.display = 'block';
+      document.getElementById('statusMessage').textContent = "⏳ Please wait 2 hours for approval...";
+
+      setTimeout(() => {
+        document.getElementById('statusMessage').textContent = "⏳ Awaiting admin decision...";
+}, 10000); // Simulated 2 hours
+
+      e.target.reset();
+      document.getElementById('form1Results').style.display = 'none';
+      document.getElementById('form5Results').style.display = 'none';
+});
+
+    function toggleResultsBox() {
+      const formLevel = document.getElementById('formLevel').value;
+      document.getElementById('form1Results').style.display = formLevel === "Form 1"? 'block': 'none';
+      document.getElementById('form5Results').style.display = formLevel === "Form 5"? 'block': 'none';
+}
+
+    function showAdminPanel() {
+      const password = document.getElementById('adminPassword').value;
+      if (password === "pmc123") {
+        document.getElementById('adminPanel').style.display = 'block';
+        renderLearnerList();
+} else {
+        alert("Incorrect password!");
+}
+}
+
+    function updateLearnerCount() {
+      document.getElementById('learnerCount').textContent = learners.length;
+}
+
+    function renderLearnerList() {
+      const list = document.getElementById('learnerList');
+      list.innerHTML = '';
+      learners.forEach((learner, index) => {
+        const card = document.createElement('div');
+        card.className = 'learner-card';
+        card.innerHTML = `
+          <p><strong>Name:</strong> ${learner.studentName}</p>
+          <p><strong>Form:</strong> ${learner.formLevel}</p>
+          <p><strong>Status:</strong> ${learner.status}</p>
+          <button onclick="approveLearner(${index})">Approve</button>
+          <button onclick="rejectLearner(${index})">Reject</button>
+        `;
+        list.appendChild(card);
+});
+}
+
+    function approveLearner(index) {
+      learners[index].status = "approved";
+      localStorage.setItem('learners', JSON.stringify(learners));
+      renderLearnerList();
+      updateApprovedList();
+}
+
+     function rejectLearner(index) {
+      learners[index].status = "rejected";
+      localStorage.setItem('learners', JSON.stringify(learners));
+      renderLearnerList();
+}
+
+    function updateApprovedList() {
+      const approved = learners.filter(l => l.status === "approved");
+      const list = document.getElementById('approvedStudents');
+      list.innerHTML = '';
+      approved.forEach(l => {
+        const li = document.createElement('li');
+        li.textContent = `${l.studentName} - ${l.formLevel}`;
+        list.appendChild(li);
+});
+      document.getElementById('approvedList').style.display = 'block';
+}
+</script>
+</body>
+</html>
+
