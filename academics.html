@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academics - Seke 2 High School</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #003366;
+      --secondary: #3498db;
+      --accent: #2980b9;
+      --light: #e6f0fa;
+      --dark: #333;
+      --white: #ffffff;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 70px;
+      height: 3px;
+      background: var(--secondary);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--secondary);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    /* Header Styles */
+    header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 15px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      margin-left: 10px;
+    }
+
+    .logo-icon {
+      font-size: 2rem;
+      color: var(--secondary);
+    }
+
+    /* Navigation */
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 30px;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      bottom: -5px;
+      left: 0;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+
+    .nav-links a.active {
+      color: var(--secondary);
+    }
+
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      width: 30px;
+      height: 30px;
+      position: relative;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: var(--white);
+      margin: 5px 0;
+      transition: var(--transition);
+      border-radius: 3px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    /* Page Header */
+    .page-header {
+      background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)), url('https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+      color: var(--white);
+      padding: 150px 0 80px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease;
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Academic Programs */
+    .academic-programs {
+      background: var(--white);
+    }
+
+    .programs-tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 12px 25px;
+      background: var(--light);
+      border: none;
+      border-radius: 5px;
+      margin: 0 10px 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .tab-btn.active {
+      background: var(--secondary);
+      color: var(--white);
+    }
+
+    .tab-btn:hover:not(.active) {
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeInTab 0.5s ease;
+    }
+
+    @keyframes fadeInTab {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .program-card {
+      background: var(--light);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .program-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--secondary);
+    }
+
+    .program-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .program-card h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .program-card ul {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .program-card li {
+      padding: 8px 0;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .program-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+      font-weight: bold;
+    }
+
+    /* Subjects Section */
+    .subjects {
+      background: var(--light);
+    }
+
+    .subjects-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .subject-category {
+      flex: 1;
+      min-width: 300px;
+      background: var(--white);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .subject-category:hover {
+      transform: translateY(-5px);
+    }
+
+    .subject-category h3 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--secondary);
+    }
+
+    .subject-category ul {
+      list-style: none;
+    }
+
+    .subject-category li {
+      padding: 8px 0;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .subject-category li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+    }
+
+    /* Practicals Section */
+    .practicals {
+      background: var(--white);
+    }
+
+    .practicals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .practical-card {
+      background: var(--light);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .practical-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .practical-icon {
+      height: 120px;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--white);
+    }
+
+    .practical-info {
+      padding: 20px;
+    }
+
+    .practical-info h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    /* Facilities Section */
+    .facilities {
+      background: var(--light);
+    }
+
+    .facilities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .facility-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .facility-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .facility-img {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .facility-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .facility-card:hover .facility-img img {
+      transform: scale(1.1);
+    }
+
+    .facility-info {
+      padding: 20px;
+    }
+
+    .facility-info h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    /* Results Section */
+    .results {
+      background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)), url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .results-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .result-stat {
+      padding: 30px 20px;
+    }
+
+    .result-number {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: var(--secondary);
+    }
+
+    .result-text {
+      font-size: 1.2rem;
+    }
+
+    /* CTA Section */
+    .cta {
+      background: var(--white);
+      text-align: center;
+    }
+
+    .cta h2 {
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: var(--white);
+      padding: 60px 0 20px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 2px;
+      background: var(--secondary);
+      bottom: 0;
+      left: 0;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a {
+      color: var(--light);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-column a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .subject-category {
+        min-width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+        z-index: 1001;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: var(--primary);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+      }
+
+      .page-header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .programs-tabs {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .tab-btn {
+        width: 80%;
+        margin-bottom: 10px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .page-header p {
+        font-size: 1rem;
+      }
+      
+      .result-number {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <i class="fas fa-graduation-cap logo-icon"></i>
+        <h1>Seke 2 High School</h1>
+      </div>
+      
+      <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="academics.html" class="active">Academics</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="register.html" class="btn">Register Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Academic Excellence</h1>
+      <p>Discover our comprehensive curriculum designed to nurture intellectual growth, critical thinking, and practical skills for success in a dynamic world.</p>
+    </div>
+  </section>
+
+  <!-- Academic Programs -->
+  <section class="academic-programs">
+    <div class="container">
+      <div class="section-title">
+        <h2>Academic Programs</h2>
+        <p>Comprehensive education from Form 1 to Form 6</p>
+      </div>
+      
+      <div class="programs-tabs">
+        <button class="tab-btn active" data-tab="form1-2">Forms 1-2</button>
+        <button class="tab-btn" data-tab="form3-4">Forms 3-4</button>
+        <button class="tab-btn" data-tab="form5-6">Forms 5-6</button>
+      </div>
+      
+      <div class="tab-content active" id="form1-2">
+        <div class="program-grid">
+          <div class="program-card">
+            <h3>Form 1 & 2 Curriculum</h3>
+            <p>Our junior secondary program builds a strong foundation in core subjects while introducing students to a wide range of disciplines.</p>
+            <ul>
+              <li>English Language & Literature</li>
+              <li>Shona</li>
+              <li>Mathematics</li>
+              <li>Integrated Science</li>
+              <li>Social Studies</li>
+              <li>Agriculture</li>
+              <li>Physical Education</li>
+              <li>Introduction to Practical Subjects</li>
+            </ul>
+            <p><strong>Focus:</strong> Building foundational knowledge and skills</p>
+          </div>
+          
+          <div class="program-card">
+            <h3>Learning Approach</h3>
+            <p>We emphasize interactive learning, critical thinking development, and character building during these formative years.</p>
+            <ul>
+              <li>Interactive classroom activities</li>
+              <li>Project-based learning</li>
+              <li>Digital literacy integration</li>
+              <li>Study skills development</li>
+              <li>Extracurricular exploration</li>
+            </ul>
+            <p><strong>Assessment:</strong> Continuous assessment with termly examinations</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="form3-4">
+        <div class="program-grid">
+          <div class="program-card">
+            <h3>O-Level Program (Forms 3-4)</h3>
+            <p>Students prepare for ZIMSEC Ordinary Level examinations with a balanced curriculum of core and elective subjects.</p>
+            <ul>
+              <li>English Language</li>
+              <li>Shona</li>
+              <li>Mathematics</li>
+              <li>Combined Science</li>
+              <li>Geography</li>
+              <li>History</li>
+              <li>Accounts/Business Studies</li>
+              <li>Practical Subject (Choice of one)</li>
+            </ul>
+            <p><strong>Focus:</strong> Preparation for O-Level examinations</p>
+          </div>
+          
+          <div class="program-card">
+            <h3>Subject Combinations</h3>
+            <p>Students can choose from various subject combinations based on their interests and career aspirations.</p>
+            <ul>
+              <li>Sciences: Biology, Chemistry, Physics</li>
+              <li>Commercial: Accounts, Business Studies, Economics</li>
+              <li>Arts: Heritage, Literature, Art</li>
+              <li>Practical: MTD, WTD, TTD, Agriculture</li>
+            </ul>
+            <p><strong>Assessment:</strong> Continuous assessment and mock examinations</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="form5-6">
+        <div class="program-grid">
+          <div class="program-card">
+            <h3>A-Level Program (Forms 5-6)</h3>
+            <p>Advanced Level education with specialized subject combinations preparing students for university and professional careers.</p>
+            <ul>
+              <li>Sciences: Mathematics, Physics, Chemistry, Biology</li>
+              <li>Commercial: Accounts, Business Studies, Economics, Mathematics</li>
+              <li>Arts: History, Literature, Geography, Shona</li>
+              <li>General Studies (Compulsory for all)</li>
+            </ul>
+            <p><strong>Focus:</strong> Specialization and university preparation</p>
+          </div>
+          
+          <div class="program-card">
+            <h3>University Preparation</h3>
+            <p>We provide comprehensive support for students transitioning to higher education.</p>
+            <ul>
+              <li>University application guidance</li>
+              <li>Career counseling</li>
+              <li>Research skills development</li>
+              <li>Leadership training</li>
+              <li>Community service projects</li>
+            </ul>
+            <p><strong>Assessment:</strong> Continuous assessment and ZIMSEC A-Level examinations</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subjects Section -->
+  <section class="subjects">
+    <div class="container">
+      <div class="section-title">
+        <h2>Subjects Offered</h2>
+        <p>Comprehensive curriculum across multiple disciplines</p>
+      </div>
+      
+      <div class="subjects-container">
+        <div class="subject-category">
+          <h3>Core Subjects</h3>
+          <ul>
+            <li>English Language</li>
+            <li>Shona</li>
+            <li>Mathematics</li>
+            <li>Combined Science</li>
+            <li>Geography</li>
+            <li>History</li>
+            <li>Heritage Studies</li>
+          </ul>
+        </div>
+        
+        <div class="subject-category">
+          <h3>Sciences</h3>
+          <ul>
+            <li>Physics</li>
+            <li>Chemistry</li>
+            <li>Biology</li>
+            <li>Computer Science</li>
+            <li>Agriculture</li>
+          </ul>
+        </div>
+        
+        <div class="subject-category">
+          <h3>Commercial & Arts</h3>
+          <ul>
+            <li>Accounts</li>
+            <li>Business Studies</li>
+            <li>Economics</li>
+            <li>Commerce</li>
+            <li>Literature in English</li>
+            <li>Art and Design</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Practicals Section -->
+  <section class="practicals">
+    <div class="container">
+      <div class="section-title">
+        <h2>Practical Subjects</h2>
+        <p>Hands-on learning for real-world skills</p>
+      </div>
+      
+      <div class="practicals-grid">
+        <div class="practical-card">
+          <div class="practical-icon">
+            <i class="fas fa-hammer"></i>
+          </div>
+          <div class="practical-info">
+            <h3>MTD</h3>
+            <p>Metal Technology & Design - Learn metalworking, welding, and design principles.</p>
+          </div>
+        </div>
+        
+        <div class="practical-card">
+          <div class="practical-icon">
+            <i class="fas fa-tree"></i>
+          </div>
+          <div class="practical-info">
+            <h3>WTD</h3>
+            <p>Wood Technology & Design - Master woodworking, carpentry, and furniture design.</p>
+          </div>
+        </div>
+        
+        <div class="practical-card">
+          <div class="practical-icon">
+            <i class="fas fa-tshirt"></i>
+          </div>
+          <div class="practical-info">
+            <h3>TTD</h3>
+            <p>Textile Technology & Design - Explore fabric design, sewing, and textile production.</p>
+          </div>
+        </div>
+        
+        <div class="practical-card">
+          <div class="practical-icon">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <div class="practical-info">
+            <h3>Agriculture</h3>
+            <p>Learn modern farming techniques, crop production, and animal husbandry.</p>
+          </div>
+        </div>
+        
+        <div class="practical-card">
+          <div class="practical-icon">
+            <i class="fas fa-bread-slice"></i>
+          </div>
+          <div class="practical-info">
+            <h3>Bakery Studies</h3>
+            <p>Master baking techniques, food safety, and small business management.</p>
+          </div>
+        </div>
+        
+        <div class="practical-card">
+          <div class="practical-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <div class="practical-info">
+            <h3>Computer Studies</h3>
+            <p>Develop digital literacy, programming skills, and IT fundamentals.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facilities Section -->
+  <section class="facilities">
+    <div class="container">
+      <div class="section-title">
+        <h2>Academic Facilities</h2>
+        <p>State-of-the-art learning environments</p>
+      </div>
+      
+      <div class="facilities-grid">
+        <div class="facility-card">
+          <div class="facility-img">
+            <img src="" alt="Science Laboratory">
+          </div>
+          <div class="facility-info">
+            <h3>Science Laboratories</h3>
+            <p>Fully equipped labs for Physics, Chemistry, and Biology with modern equipment for practical experiments.</p>
+          </div>
+        </div>
+        
+        <div class="facility-card">
+          <div class="facility-img">
+            <img src="" alt="Library">
+          </div>
+          <div class="facility-info">
+            <h3>Library & Resource Center</h3>
+            <p>Extensive collection of books, journals, and digital resources with Wi-Fi access and study areas.</p>
+          </div>
+        </div>
+        
+        <div class="facility-card">
+          <div class="facility-img">
+            <img src="" alt="Computer Lab">
+          </div>
+          <div class="facility-info">
+            <h3>Computer Laboratory</h3>
+            <p>Modern computer lab with internet access, software applications, and programming tools.</p>
+          </div>
+        </div>
+        
+        <div class="facility-card">
+          <div class="facility-img">
+            <img src="" alt="Practical Workshops">
+          </div>
+          <div class="facility-info">
+            <h3>Practical Workshops</h3>
+            <p>Specialized workshops for MTD, WTD, TTD, and Agriculture with professional-grade equipment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section class="results">
+    <div class="container">
+      <div class="section-title">
+        <h2>Academic Excellence</h2>
+        <p>Consistent outstanding performance in national examinations</p>
+      </div>
+      
+      <div class="results-stats">
+        <div class="result-stat">
+          <div class="result-number">95%</div>
+          <div class="result-text">O-Level Pass Rate</div>
+        </div>
+        
+        <div class="result-stat">
+          <div class="result-number">88%</div>
+          <div class="result-text">A-Level Pass Rate</div>
+        </div>
+        
+        <div class="result-stat">
+          <div class="result-number">75%</div>
+          <div class="result-text">University Acceptance</div>
+        </div>
+        
+        <div class="result-stat">
+          <div class="result-number">15+</div>
+          <div class="result-text">National Awards</div>
+        </div>
+      </div>
+      
+      <p>Our students consistently outperform national averages, with many achieving distinctions in their chosen subjects.</p>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Join Our Academic Community?</h2>
+      <p>Enrollment is open for Form 1 to Form 6. Take the first step toward academic excellence today.</p>
+      <a href="register.html" class="btn">Apply Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Unity B, Post Office Box 1, Chitungwiza, Harare Zimbabwe</p>
+          <p><i class="fas fa-phone"></i> +263 123 456 789</p>
+          <p><i class="fas fa-envelope"></i> seke2high@gmail.com</p>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="academics.html">Academics</a></li>
+            <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Connect With Us</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Seke 2 High School. All rights reserved.</p>
+        <p>Designed by Power Minds Core - Rian Pfarikingstone</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+    
+    // Tab functionality for academic programs
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons and contents
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+        
+        // Add active class to clicked button
+        btn.classList.add('active');
+        
+        // Show corresponding content
+        const tabId = btn.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+    
+    // Scroll animation for cards
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.program-card, .subject-category, .practical-card, .facility-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(card);
+    });
+    
+    // Animate results counter
+    const resultNumbers = document.querySelectorAll('.result-number');
+    const resultsSection = document.querySelector('.results');
+    
+    const resultsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          resultNumbers.forEach(stat => {
+            const target = parseInt(stat.textContent);
+            let current = 0;
+            const increment = target / 50;
+            
+            const updateNumber = () => {
+              if (current < target) {
+                current += increment;
+                stat.textContent = Math.ceil(current) + (stat.textContent.includes('%') ? '%' : '+');
+                setTimeout(updateNumber, 30);
+              } else {
+                stat.textContent = target + (stat.textContent.includes('%') ? '%' : '+');
+              }
+            };
+            
+            updateNumber();
+          });
+          
+          // Stop observing after animation
+          resultsObserver.unobserve(resultsSection);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    resultsObserver.observe(resultsSection);
+  </script>
+</body>
+</html>
