@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admissions - Seke 2 High School</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #003366;
+      --secondary: #3498db;
+      --accent: #2980b9;
+      --light: #e6f0fa;
+      --dark: #333;
+      --white: #ffffff;
+      --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 70px;
+      height: 3px;
+      background: var(--secondary);
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--secondary);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    /* Header Styles */
+    header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 15px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      margin-left: 10px;
+    }
+
+    .logo-icon {
+      font-size: 2rem;
+      color: var(--secondary);
+    }
+
+    /* Navigation */
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 30px;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      bottom: -5px;
+      left: 0;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+
+    .nav-links a.active {
+      color: var(--secondary);
+    }
+
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      width: 30px;
+      height: 30px;
+      position: relative;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: var(--white);
+      margin: 5px 0;
+      transition: var(--transition);
+      border-radius: 3px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    /* Page Header */
+    .page-header {
+      background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)), url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2064&q=80') no-repeat center center/cover;
+      color: var(--white);
+      padding: 150px 0 80px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease;
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Admissions Process */
+    .admissions-process {
+      background: var(--white);
+    }
+
+    .process-steps {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .process-step {
+      flex: 1;
+      min-width: 250px;
+      text-align: center;
+      padding: 30px 20px;
+      background: var(--light);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .process-step:hover {
+      transform: translateY(-10px);
+    }
+
+    .step-number {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 40px;
+      background: var(--secondary);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .step-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .process-step h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    /* Requirements */
+    .requirements {
+      background: var(--light);
+    }
+
+    .requirements-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .requirement-card {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .requirement-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .requirement-card h3 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--secondary);
+    }
+
+    .requirement-card ul {
+      list-style: none;
+    }
+
+    .requirement-card li {
+      padding: 8px 0;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .requirement-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+      font-weight: bold;
+    }
+
+    /* Fees Section */
+    .fees {
+      background: var(--white);
+    }
+
+    .fees-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .fee-card {
+      background: var(--light);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .fee-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .fee-card h3 {
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .fee-amount {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+
+    .fee-details {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .fee-details li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    /* Registration Form */
+    .registration {
+      background: var(--light);
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      border-color: var(--secondary);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    }
+
+    .results-box {
+      display: none;
+      margin-top: 15px;
+    }
+
+    /* Status Sections */
+    .status-section {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      margin-top: 30px;
+      display: none;
+    }
+
+    .status-section h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    /* FAQ Section */
+    .faq {
+      background: var(--white);
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      margin-bottom: 15px;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .faq-question {
+      background: var(--primary);
+      color: var(--white);
+      padding: 15px 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+    }
+
+    .faq-question:hover {
+      background: var(--accent);
+    }
+
+    .faq-question h3 {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .faq-answer {
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      background: var(--light);
+    }
+
+    .faq-answer.active {
+      padding: 20px;
+      max-height: 500px;
+    }
+
+    /* CTA Section */
+    .cta {
+      background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.9)), url('https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+      color: var(--white);
+      text-align: center;
+      padding: 100px 0;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: var(--white);
+      padding: 60px 0 20px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 2px;
+      background: var(--secondary);
+      bottom: 0;
+      left: 0;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a {
+      color: var(--light);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-column a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .process-steps {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+        z-index: 1001;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: var(--primary);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+      }
+
+      .page-header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .form-container {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .page-header h1 {
+        font-size: 2rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .page-header p {
+        font-size: 1rem;
+      }
+      
+      .fee-amount {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <i class="fas fa-graduation-cap logo-icon"></i>
+        <h1>Seke 2 High School</h1>
+      </div>
+      
+      <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="academics.html">Academics</a></li>
+          <li><a href="admissions.html" class="active">Admissions</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#registration" class="btn">Apply Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Admissions</h1>
+      <p>Begin your journey to academic excellence at Seke 2 High School. Discover our admission process, requirements, and apply today.</p>
+    </div>
+  </section>
+
+  <!-- Admissions Process -->
+  <section class="admissions-process">
+    <div class="container">
+      <div class="section-title">
+        <h2>Admission Process</h2>
+        <p>Simple steps to join our academic community</p>
+      </div>
+      
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <i class="fas fa-file-alt step-icon"></i>
+          <h3>Submit Application</h3>
+          <p>Complete the online registration form with required student and parent information.</p>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <i class="fas fa-clipboard-check step-icon"></i>
+          <h3>Document Review</h3>
+          <p>Our admissions team reviews your application and supporting documents.</p>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <i class="fas fa-user-check step-icon"></i>
+          <h3>Approval</h3>
+          <p>Receive notification of acceptance within 24 hours of application submission.</p>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <i class="fas fa-graduation-cap step-icon"></i>
+          <h3>Enrollment</h3>
+          <p>Complete fee payment and finalize enrollment to secure your place.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Requirements -->
+  <section class="requirements">
+    <div class="container">
+      <div class="section-title">
+        <h2>Admission Requirements</h2>
+        <p>What you need to apply to Seke 2 High School</p>
+      </div>
+      
+      <div class="requirements-container">
+        <div class="requirement-card">
+          <h3>Form 1 Entry</h3>
+          <ul>
+            <li>Completed Primary Education (Grade 7)</li>
+            <li>Grade 7 Results Slip or Certificate</li>
+            <li>Birth Certificate</li>
+            <li>Transfer Letter (if applicable)</li>
+          </ul>
+        </div>
+        
+        <div class="requirement-card">
+          <h3>Form 2-4 Entry</h3>
+          <ul>
+            <li>Previous School Reports</li>
+            <li>O-Level Results (for Form 5)</li>
+            <li>Birth Certificate</li>
+            <li>Transfer Letter from Previous School</li>
+          </ul>
+        </div>
+        
+        <div class="requirement-card">
+          <h3>A-Level Entry (Form 5-6)</h3>
+          <ul>
+            <li>ZIMSEC O-Level Certificate</li>
+            <li>Minimum 5 O-Level passes including English and Mathematics</li>
+            <li>Birth Certificate</li>
+            <li>Transfer Letter from Previous School</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Fees Section -->
+  <section class="fees">
+    <div class="container">
+      <div class="section-title">
+        <h2>Fees & Tuition</h2>
+        <p>Affordable quality education with transparent fee structure</p>
+      </div>
+      
+      <div class="fees-container">
+        <div class="fee-card">
+          <h3>Form 1-4 Students</h3>
+          <div class="fee-amount">$245</div>
+          <ul class="fee-details">
+            <li>Boys Enrollment Fee</li>
+            <li>Includes uniform and first term fees</li>
+            <li>Stationery: $17 for school books</li>
+          
+          </ul>
+          <a href="#registration" class="btn">Apply Now</a>
+        </div>
+        
+        <div class="fee-card">
+          <h3>Form 1-4 Students</h3>
+          <div class="fee-amount">$252</div>
+          <ul class="fee-details">
+            <li>Girls Enrollment Fee</li>
+            <li>Includes uniform and first term fees</li>
+            <li>Stationery: $17 for school books</li>
+            
+          </ul>
+          <a href="#registration" class="btn">Apply Now</a>
+        </div>
+        
+        <div class="fee-card">
+          <h3>A-Level Students</h3>
+          <div class="fee-amount">$100</div>
+          <ul class="fee-details">
+            <li>Enrollment Fee (All Students)</li>
+            <li>Includes specialized materials</li>
+            <li>Laboratory fees included</li>
+            
+          </ul>
+          <a href="#registration" class="btn">Apply Now</a>
+        </div>
+      </div>
+      
+      <div style="text-align: center; margin-top: 40px;">
+        <p><strong>Payment Plans Available:</strong> We offer flexible payment options to accommodate family budgets. Contact our finance office for details.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Registration Form -->
+  <section class="registration" id="registration">
+    <div class="container">
+      <div class="section-title">
+        <h2>Online Registration</h2>
+        <p>Complete the form below to begin your application process</p>
+      </div>
+      
+      <div class="form-container">
+        <form id="registrationForm">
+          <div class="form-group">
+            <label for="studentName">Student Name</label>
+            <input type="text" id="studentName" class="form-control" placeholder="Enter student's full name" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="parentName">Parent/Guardian Name</label>
+            <input type="text" id="parentName" class="form-control" placeholder="Enter parent/guardian name" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="contact">Contact Number</label>
+            <input type="tel" id="contact" class="form-control" placeholder="Enter phone number" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="formLevel">Form Level</label>
+            <select id="formLevel" class="form-control" onchange="toggleResultsBox()" required>
+              <option value="">Select Form Level</option>
+              <option value="Form 1">Form 1</option>
+              <option value="Form 2">Form 2</option>
+              <option value="Form 3">Form 3</option>
+              <option value="Form 4">Form 4</option>
+              <option value="Form 5">Form 5</option>
+              <option value="Form 6">Form 6</option>
+            </select>
+          </div>
+
+          <div id="form1Results" class="results-box">
+            <div class="form-group">
+              <label for="form1Result">Grade 7 Results</label>
+              <textarea id="form1Result" class="form-control" placeholder="Enter Grade 7 results details" rows="4"></textarea>
+            </div>
+          </div>
+
+          <div id="form5Results" class="results-box">
+            <div class="form-group">
+              <label for="form5Result">O-Level Results</label>
+              <textarea id="form5Result" class="form-control" placeholder="Enter O-Level results details" rows="4"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn" style="width: 100%;">Submit Application</button>
+        </form>
+        
+        <div id="confirmationMessage" style="margin-top: 20px; text-align: center;"></div>
+      </div>
+
+      <!-- Approval Status -->
+      <div class="status-section" id="approvalStatus">
+        <h3>Application Status</h3>
+        <p id="statusMessage">Please wait 2 hours for approval...</p>
+      </div>
+
+      <!-- Admin Panel (Hidden by default) -->
+      <div class="status-section" id="adminPanel">
+        <h3>Admin Panel</h3>
+        <p>Total Registered Learners: <span id="learnerCount">0</span></p>
+        <div id="learnerList"></div>
+        <button onclick="clearAllData()" class="btn" style="margin-top: 15px;">Clear All Registrations</button>
+      </div>
+
+      <!-- Approved Students -->
+      <div class="status-section" id="approvedList">
+        <h3>Approved Students</h3>
+        <ul id="approvedStudents"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq">
+    <div class="container">
+      <div class="section-title">
+        <h2>Frequently Asked Questions</h2>
+        <p>Quick answers to common admission questions</p>
+      </div>
+      
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>When is the application deadline?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We accept applications throughout the year, but we recommend applying at least one month before the start of each term to secure your place.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What documents do I need to submit?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>You'll need a birth certificate, previous school reports, transfer letter (if applicable), and medical report if student perhaps has any medical conditions.(optional) Specific requirements vary by form level.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Are scholarships available?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, we offer merit-based scholarships for outstanding students. Contact our admissions office for more information about scholarship opportunities.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can I visit the school before applying?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! We encourage prospective students and parents to visit our campus. Please contact us to schedule a tour.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What is the class size?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We maintain small class sizes with an average of 40 - 45 students per class to ensure personalized attention and effective learning.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Join Our Community?</h2>
+      <p>Take the first step toward academic excellence at Seke 2 High School. Apply today and begin your journey to success.</p>
+      <a href="#registration" class="btn">Apply Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Unity B, Post Office Box 1, Chitungwiza, Harare Zimbabwe</p>
+          <p><i class="fas fa-phone"></i> +263 123 456 789</p>
+          <p><i class="fas fa-envelope"></i> seke2high@gmail.com</p>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="academics.html">Academics</a></li>
+            <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        
+        
+        
+        <div class="footer-column">
+          <h3>Connect With Us</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Seke 2 High School. All rights reserved.</p>
+        <p>Designed by Power Minds Core in partnership with <strong>DevFella<strong/></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+    
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        answer.classList.toggle('active');
+        
+        // Rotate chevron icon
+        const icon = question.querySelector('i');
+        icon.classList.toggle('fa-chevron-down');
+        icon.classList.toggle('fa-chevron-up');
+      });
+    });
+    
+    // Scroll animation for process steps
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.process-step, .requirement-card, .fee-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(card);
+    });
+
+    // Registration Form Functionality
+    let learners = JSON.parse(localStorage.getItem('learners')) || [];
+    updateLearnerCount();
+    checkAutoClear();
+
+    function setInitialTimestamp() {
+      if (!localStorage.getItem('registrationTimestamp')) {
+        localStorage.setItem('registrationTimestamp', Date.now());
+      }
+    }
+
+    function checkAutoClear() {
+      const timestamp = localStorage.getItem('registrationTimestamp');
+      if (timestamp) {
+        const now = Date.now();
+        const twoDays = 2 * 24 * 60 * 60 * 1000;
+        if (now - parseInt(timestamp) >= twoDays) {
+          localStorage.removeItem('learners');
+          localStorage.removeItem('registrationTimestamp');
+          learners = [];
+          updateLearnerCount();
+          renderLearnerList();
+          updateApprovedList();
+          alert("⏳ 2 days have passed. All registration data has been cleared.");
+        }
+      }
+    }
+
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      setInitialTimestamp();
+      checkAutoClear();
+
+      const studentName = document.getElementById('studentName').value;
+      const parentName = document.getElementById('parentName').value;
+      const contact = document.getElementById('contact').value;
+      const formLevel = document.getElementById('formLevel').value;
+      const form1Result = document.getElementById('form1Result').value;
+      const form5Result = document.getElementById('form5Result').value;
+
+      const learner = {
+        studentName,
+        parentName,
+        contact,
+        formLevel,
+        results: formLevel === "Form 1" ? form1Result : formLevel === "Form 5" ? form5Result : "",
+        status: "pending"
+      };
+
+      learners.push(learner);
+      localStorage.setItem('learners', JSON.stringify(learners));
+      updateLearnerCount();
+
+      document.getElementById('confirmationMessage').textContent = "✅ Registration successfully sent. Awaiting head approval...";
+      document.getElementById('approvalStatus').style.display = 'block';
+      document.getElementById('statusMessage').textContent = "⏳ Please wait 2 hours for approval...";
+
+      setTimeout(() => {
+        document.getElementById('statusMessage').textContent = "⏳ Awaiting admin decision...";
+      }, 10000); // Simulated 2 hours
+
+      e.target.reset();
+      document.getElementById('form1Results').style.display = 'none';
+      document.getElementById('form5Results').style.display = 'none';
+    });
+
+    function toggleResultsBox() {
+      const formLevel = document.getElementById('formLevel').value;
+      document.getElementById('form1Results').style.display = formLevel === "Form 1" ? 'block' : 'none';
+      document.getElementById('form5Results').style.display = formLevel === "Form 5" ? 'block' : 'none';
+    }
+
+    function updateLearnerCount() {
+      document.getElementById('learnerCount').textContent = learners.length;
+    }
+
+    function renderLearnerList() {
+      const list = document.getElementById('learnerList');
+      list.innerHTML = '';
+      learners.forEach((learner, index) => {
+        const card = document.createElement('div');
+        card.className = 'learner-card';
+        card.innerHTML = `
+          <p><strong>Name:</strong> ${learner.studentName}</p>
+          <p><strong>Form:</strong> ${learner.formLevel}</p>
+          <p><strong>Status:</strong> ${learner.status}</p>
+          <button onclick="approveLearner(${index})" class="btn" style="padding: 8px 15px; margin-right: 10px;">Approve</button>
+          <button onclick="rejectLearner(${index})" class="btn" style="padding: 8px 15px; background: #e74c3c;">Reject</button>
+        `;
+        list.appendChild(card);
+      });
+    }
+
+    function approveLearner(index) {
+      learners[index].status = "approved";
+      localStorage.setItem('learners', JSON.stringify(learners));
+      renderLearnerList();
+      updateApprovedList();
+    }
+
+    function rejectLearner(index) {
+      learners[index].status = "rejected";
+      localStorage.setItem('learners', JSON.stringify(learners));
+      renderLearnerList();
+    }
+
+    function updateApprovedList() {
+      const approved = learners.filter(l => l.status === "approved");
+      const list = document.getElementById('approvedStudents');
+      list.innerHTML = '';
+      approved.forEach(l => {
+        const li = document.createElement('li');
+        li.textContent = `${l.studentName} - ${l.formLevel}`;
+        list.appendChild(li);
+      });
+      document.getElementById('approvedList').style.display = 'block';
+    }
+
+    // Admin Panel (for demonstration)
+    function showAdminPanel() {
+      const password = prompt("Enter admin password:");
+      if (password === "pmc123") {
+        document.getElementById('adminPanel').style.display = 'block';
+        renderLearnerList();
+      } else {
+        alert("Incorrect password!");
+      }
+    }
+
+    function clearAllData() {
+      if (confirm("Are you sure you want to clear all registration data?")) {
+        localStorage.removeItem('learners');
+        localStorage.removeItem('registrationTimestamp');
+        learners = [];
+        updateLearnerCount();
+        renderLearnerList();
+        updateApprovedList();
+        alert("All registration data has been cleared.");
+      }
+    }
+
+    // Add admin access button for demonstration
+    const adminBtn = document.createElement('button');
+    adminBtn.textContent = "Admin Access";
+    adminBtn.className = 'btn';
+    adminBtn.style.position = 'fixed';
+    adminBtn.style.bottom = '20px';
+    adminBtn.style.right = '20px';
+    adminBtn.style.zIndex = '1000';
+    adminBtn.onclick = showAdminPanel;
+    document.body.appendChild(adminBtn);
+  </script>
+</body>
+</html>
